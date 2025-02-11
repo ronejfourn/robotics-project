@@ -1,0 +1,177 @@
+<robot name="the_arm" version="1.0">
+  <joint name="arm_lower_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="3.14159 -0.00000 -3.14159" xyz="-1.12000 -0.00000 0.00000"/>
+    <parent link="arm_upper_link"/>
+    <child link="arm_lower_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_torso_link_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.08000"/>
+    <parent link="arm_base_link"/>
+    <child link="arm_torso_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_upper_link_joint" type="revolute">
+    <limit lower="-1.57000" upper="1.57000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="0.16000 0.00000 0.56000"/>
+    <parent link="arm_torso_link"/>
+    <child link="arm_upper_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="gripper_base_link_joint" type="revolute">
+    <limit lower="-1.04720" upper="1.04720" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 0.00000 -0.00000" xyz="0.88000 -0.00000 0.16000"/>
+    <parent link="arm_lower_link"/>
+    <child link="gripper_base_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="gripper_left_link_joint" type="revolute">
+    <limit lower="-0.17453" upper="0.01371" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="3.14159 0.00000 3.14159" xyz="0.11200 0.00000 -0.08000"/>
+    <parent link="gripper_base_link"/>
+    <child link="gripper_left_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <joint name="gripper_right_link_joint" type="revolute">
+    <limit lower="-0.00914" upper="0.17453" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.11200 -0.00000 0.08000"/>
+    <parent link="gripper_base_link"/>
+    <child link="gripper_right_link"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <link name="arm_base_link">
+    <collision name="arm_base_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <cylinder radius="0.32000" length="0.16000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="1.08333" ixy="0.00000" ixz="0.00000" iyy="1.08333" iyz="0.00000" izz="2.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="arm_base">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/arm_base_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_lower_link">
+    <collision name="arm_lower_collision">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.40000 -0.00000 0.16000"/>
+      <geometry>
+        <cylinder radius="0.16000" length="0.96000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="3.25000" ixy="0.00000" ixz="0.00000" iyy="3.25000" iyz="0.00000" izz="0.50000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="1.00000 -0.00000 0.40000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="arm_lower">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.40000 -0.00000 0.16000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/arm_lower_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_torso_link">
+    <collision name="arm_torso_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.32000"/>
+      <geometry>
+        <cylinder radius="0.16000" length="0.64000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="1.58333" ixy="0.00000" ixz="0.00000" iyy="1.58333" iyz="0.00000" izz="0.50000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.80000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="arm_torso">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.32000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/arm_torso_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_upper_link">
+    <collision name="arm_upper_collision">
+      <origin rpy="0.40442 -1.57080 -0.40442" xyz="-0.56000 -0.00000 0.16000"/>
+      <geometry>
+        <cylinder radius="0.16000" length="1.28000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="5.58333" ixy="0.00000" ixz="0.00000" iyy="5.58333" iyz="0.00000" izz="0.50000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-1.40000 -0.00000 0.40000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="arm_upper">
+      <origin rpy="0.40442 -1.57080 -0.40442" xyz="-0.56000 -0.00000 0.16000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/arm_upper_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="gripper_base_link">
+    <collision name="gripper_base_collision">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.08000 -0.00000 0.00000"/>
+      <geometry>
+        <box size="0.16000 0.16000 0.16000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.16667" ixy="0.00000" ixz="0.00000" iyy="0.16667" iyz="0.00000" izz="0.16667"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.20000 -0.00000 0.00000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="gripper_base">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.08000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/gripper_base_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="gripper_left_link">
+    <collision name="gripper_left_collision">
+      <origin rpy="0.30079 -1.57080 -0.30079" xyz="-0.20800 -0.00000 0.04000"/>
+      <geometry>
+        <box size="0.08000 0.08000 0.48000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.77083" ixy="0.00000" ixz="-0.00000" iyy="0.77083" iyz="0.00000" izz="0.04167"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.52000 -0.00000 0.10000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="gripper_left">
+      <origin rpy="0.30079 -1.57080 -0.30079" xyz="-0.20800 -0.00000 0.04000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/gripper_left_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="gripper_right_link">
+    <collision name="gripper_right_collision">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.20800 -0.00000 0.04000"/>
+      <geometry>
+        <box size="0.08000 0.08000 0.48000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.77083" ixy="0.00000" ixz="0.00000" iyy="0.77083" iyz="0.00000" izz="0.04167"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.52000 -0.00000 0.10000"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="gripper_right">
+      <origin rpy="0.40442 1.57080 0.40442" xyz="0.20800 -0.00000 0.04000"/>
+      <geometry>
+        <mesh filename="package://the_arm/meshes/stl/gripper_right_mesh.stl" scale="0.40000 0.40000 0.40000"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
