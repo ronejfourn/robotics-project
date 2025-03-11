@@ -8,7 +8,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     pkg_share = FindPackageShare(package='robotics-project').find('robotics-project')
-    default_model_path = os.path.join(pkg_share, 'urdf/robotics_project.urdf')
+    default_model_path = os.path.join(pkg_share, 'urdf/robotics-project.urdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
 
     gui = LaunchConfiguration('gui')
