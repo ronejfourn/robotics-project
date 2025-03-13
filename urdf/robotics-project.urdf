@@ -1,111 +1,116 @@
 <robot name="robotics-project" version="1.0">
   <joint name="arm_base_link_joint" type="fixed">
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.40000 0.20000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.04000 0.02000"/>
     <parent link="base_body_link"/>
     <child link="arm_base_link"/>
   </joint>
   <joint name="arm_lower_link_joint" type="continuous">
     <limit lower="0.00000" upper="0.00000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.02000"/>
     <parent link="arm_base_link"/>
     <child link="arm_lower_link"/>
     <axis xyz="0.00000 0.00000 1.00000"/>
   </joint>
   <joint name="arm_mid_link_joint" type="revolute">
-    <limit lower="-3.14000" upper="3.14000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 1.40000"/>
+    <limit lower="-1.57080" upper="1.57080" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.14000"/>
     <parent link="arm_lower_link"/>
     <child link="arm_mid_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="arm_upper_link_joint" type="revolute">
-    <limit lower="-3.14000" upper="3.14000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 3.00000"/>
+    <limit lower="0.00000" upper="1.57080" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.30000"/>
     <parent link="arm_mid_link"/>
     <child link="arm_upper_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="arm_wrist_link_joint" type="revolute">
-    <limit lower="-3.14000" upper="3.14000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.80000"/>
+    <limit lower="-1.57080" upper="1.57080" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.18000"/>
     <parent link="arm_upper_link"/>
     <child link="arm_wrist_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="base_caster_link_joint" type="fixed">
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 -0.20000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.18000 -0.02000"/>
     <parent link="base_body_link"/>
     <child link="base_caster_link"/>
   </joint>
+  <joint name="base_lidar_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.15000 0.07000"/>
+    <parent link="base_body_link"/>
+    <child link="base_lidar_link"/>
+  </joint>
   <joint name="base_wheel_l_link_joint" type="continuous">
     <limit lower="0.00000" upper="0.00000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="-1.40000 1.00000 0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.14000 0.19000 0.00000"/>
     <parent link="base_body_link"/>
     <child link="base_wheel_l_link"/>
     <axis xyz="-1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="base_wheel_r_link_joint" type="continuous">
     <limit lower="0.00000" upper="0.00000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="1.40000 1.00000 0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.14000 0.19000 0.00000"/>
     <parent link="base_body_link"/>
     <child link="base_wheel_r_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="gripper_base_link_joint" type="fixed">
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.70000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.07000"/>
     <parent link="arm_wrist_link"/>
     <child link="gripper_base_link"/>
   </joint>
   <joint name="gripper_l_link_joint" type="prismatic">
-    <limit lower="0.00000" upper="0.40000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.10000 0.00000 0.10000"/>
+    <limit lower="0.00000" upper="0.02000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01000 -0.00000 0.01000"/>
     <parent link="gripper_base_link"/>
     <child link="gripper_l_link"/>
     <axis xyz="-1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="gripper_r_link_joint" type="prismatic">
-    <limit lower="0.00000" upper="0.40000" effort="0.00000" velocity="0.00000"/>
-    <origin rpy="0.00000 0.00000 0.00000" xyz="0.10000 0.00000 0.10000"/>
+    <limit lower="0.00000" upper="0.02000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.01000 -0.00000 0.01000"/>
     <parent link="gripper_base_link"/>
     <child link="gripper_r_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <link name="arm_base_link">
     <collision name="arm_base_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.01000"/>
       <geometry>
-        <cylinder radius="0.40000" length="0.20000"/>
+        <cylinder radius="0.04000" length="0.02000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00433" ixy="0.00000" ixz="0.00000" iyy="0.00433" iyz="0.00000" izz="0.00800"/>
+      <inertia ixx="0.00087" ixy="0.00000" ixz="0.00000" iyy="0.00087" iyz="0.00000" izz="0.00160"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
-      <mass value="0.10000"/>
+      <mass value="0.02000"/>
     </inertial>
     <visual name="arm_base">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.10000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.01000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_base.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_base.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="arm_lower_link">
     <collision name="arm_lower_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.02000"/>
       <geometry>
-        <box size="1.60000 1.60000 0.40000"/>
+        <box size="0.16000 0.16000 0.04000"/>
       </geometry>
     </collision>
     <collision name="arm_lower_l_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.60000 0.00000 1.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.06000 -0.00000 0.12000"/>
       <geometry>
-        <box size="0.40000 1.60000 1.60000"/>
+        <box size="0.04000 0.16000 0.16000"/>
       </geometry>
     </collision>
     <collision name="arm_lower_r_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.60000 0.00000 1.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.06000 -0.00000 0.12000"/>
       <geometry>
-        <box size="0.40000 1.60000 1.60000"/>
+        <box size="0.04000 0.16000 0.16000"/>
       </geometry>
     </collision>
     <inertial>
@@ -114,126 +119,126 @@
       <mass value="0.30000"/>
     </inertial>
     <visual name="arm_lower">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.02000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_lower.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_lower.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_lower_l">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.60000 0.00000 1.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.06000 -0.00000 0.12000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_lower_l.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_lower_l.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_lower_r">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.60000 0.00000 1.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.06000 -0.00000 0.12000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_lower_r.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_lower_r.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="arm_mid_link">
     <collision name="arm_mid_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.80000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.08000"/>
       <geometry>
-        <box size="0.80000 1.20000 2.80000"/>
+        <box size="0.08000 0.12000 0.28000"/>
       </geometry>
     </collision>
     <collision name="arm_mid_l_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.60000 0.00000 2.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.06000 -0.00000 0.24000"/>
       <geometry>
-        <box size="0.40000 1.20000 2.00000"/>
+        <box size="0.04000 0.12000 0.20000"/>
       </geometry>
     </collision>
     <collision name="arm_mid_r_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.60000 0.00000 2.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.06000 -0.00000 0.24000"/>
       <geometry>
-        <box size="0.40000 1.20000 2.00000"/>
+        <box size="0.04000 0.12000 0.20000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.16800" ixy="0.00000" ixz="0.00000" iyy="0.14000" iyz="0.00000" izz="0.04400"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.86667"/>
-      <mass value="0.30000"/>
+      <inertia ixx="0.12600" ixy="0.00000" ixz="0.00000" iyy="0.10500" iyz="0.00000" izz="0.03300"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 1.86667"/>
+      <mass value="0.22500"/>
     </inertial>
     <visual name="arm_mid">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.80000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.08000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_mid.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_mid.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_mid_l">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.60000 0.00000 2.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.06000 -0.00000 0.24000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_mid_l.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_mid_l.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_mid_r">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.60000 0.00000 2.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.06000 -0.00000 0.24000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_mid_r.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_mid_r.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="arm_upper_link">
     <collision name="arm_upper_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.04000"/>
       <geometry>
-        <box size="0.80000 0.80000 1.60000"/>
+        <box size="0.08000 0.08000 0.16000"/>
       </geometry>
     </collision>
     <collision name="arm_upper_l_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.30000 0.00000 1.60000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03000 -0.00000 0.16000"/>
       <geometry>
-        <box size="0.20000 0.80000 0.80000"/>
+        <box size="0.02000 0.08000 0.08000"/>
       </geometry>
     </collision>
     <collision name="arm_upper_r_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.30000 0.00000 1.60000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.03000 -0.00000 0.16000"/>
       <geometry>
-        <box size="0.20000 0.80000 0.80000"/>
+        <box size="0.02000 0.08000 0.08000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.04800" ixy="0.00000" ixz="0.00000" iyy="0.03800" iyz="0.00000" izz="0.02200"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.20000"/>
-      <mass value="0.30000"/>
+      <inertia ixx="0.01867" ixy="0.00000" ixz="0.00000" iyy="0.01617" iyz="0.00000" izz="0.00817"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.00000"/>
+      <mass value="0.10000"/>
     </inertial>
     <visual name="arm_upper">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.04000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_upper.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_upper.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_upper_l">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.30000 0.00000 1.60000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03000 -0.00000 0.16000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_upper_l.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_upper_l.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
     <visual name="arm_upper_r">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.30000 0.00000 1.60000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.03000 -0.00000 0.16000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_upper_r.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_upper_r.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="arm_wrist_link">
     <collision name="arm_wrist_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.02000"/>
       <geometry>
-        <box size="0.40000 0.80000 0.80000"/>
+        <box size="0.04000 0.08000 0.08000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.01067" ixy="0.00000" ixz="0.00000" iyy="0.00667" iyz="0.00000" izz="0.00667"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
-      <mass value="0.10000"/>
+      <inertia ixx="0.00267" ixy="0.00000" ixz="0.00000" iyy="0.00167" iyz="0.00000" izz="0.00167"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.20000"/>
+      <mass value="0.02500"/>
     </inertial>
     <visual name="arm_wrist">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.20000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.02000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/arm_wrist.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_wrist.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
@@ -241,18 +246,18 @@
     <collision name="base_body_collision">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
       <geometry>
-        <box size="2.80000 3.60000 0.40000"/>
+        <box size="0.28000 0.50400 0.04000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.10933" ixy="0.00000" ixz="0.00000" iyy="0.06667" iyz="0.00000" izz="0.17333"/>
+      <inertia ixx="2.13013" ixy="0.00000" ixz="0.00000" iyy="0.66667" iyz="0.00000" izz="2.77013"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
-      <mass value="0.10000"/>
+      <mass value="1.00000"/>
     </inertial>
     <visual name="base_body">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/base_body.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/base_body.stl" scale="0.10000 0.14000 0.10000"/>
       </geometry>
     </visual>
   </link>
@@ -260,113 +265,132 @@
     <collision name="base_caster_collision">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
       <geometry>
-        <sphere radius="0.41569"/>
+        <sphere radius="0.04157"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00691" ixy="0.00000" ixz="0.00000" iyy="0.00691" iyz="0.00000" izz="0.00691"/>
+      <inertia ixx="0.00518" ixy="0.00000" ixz="0.00000" iyy="0.00518" iyz="0.00000" izz="0.00518"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
-      <mass value="0.10000"/>
+      <mass value="0.07500"/>
     </inertial>
     <visual name="base_caster">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/base_caster.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/base_caster.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="base_lidar_link">
+    <collision name="base_lidar_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <cylinder radius="0.05000" length="0.10000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02917" ixy="0.00000" ixz="0.00000" iyy="0.02917" iyz="0.00000" izz="0.02500"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="0.20000"/>
+    </inertial>
+    <visual name="base_lidar">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/base_lidar.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="base_wheel_l_link">
     <collision name="base_wheel_l_collision">
-      <origin rpy="-0.00000 1.57080 0.00000" xyz="-0.20000 0.00000 0.00000"/>
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="-0.02000 -0.00000 0.00000"/>
       <geometry>
-        <cylinder radius="0.60000" length="0.40000"/>
+        <cylinder radius="0.06000" length="0.04000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.01800" ixy="0.00000" ixz="0.00000" iyy="0.01033" iyz="0.00000" izz="0.01033"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.20000 0.00000 0.00000"/>
-      <mass value="0.10000"/>
+      <inertia ixx="0.01350" ixy="0.00000" ixz="0.00000" iyy="0.00775" iyz="0.00000" izz="0.00775"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.20000 -0.00000 0.00000"/>
+      <mass value="0.07500"/>
     </inertial>
     <visual name="base_wheel_l">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.20000 0.00000 0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02000 -0.00000 0.00000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/base_wheel_l.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/base_wheel_l.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="base_wheel_r_link">
     <collision name="base_wheel_r_collision">
-      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.20000 0.00000 0.00000"/>
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.02000 -0.00000 0.00000"/>
       <geometry>
-        <cylinder radius="0.60000" length="0.40000"/>
+        <cylinder radius="0.06000" length="0.04000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.01800" ixy="0.00000" ixz="0.00000" iyy="0.01033" iyz="0.00000" izz="0.01033"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.20000 0.00000 0.00000"/>
-      <mass value="0.10000"/>
+      <inertia ixx="0.01350" ixy="0.00000" ixz="0.00000" iyy="0.00775" iyz="0.00000" izz="0.00775"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.20000 -0.00000 0.00000"/>
+      <mass value="0.07500"/>
     </inertial>
     <visual name="base_wheel_r">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.20000 0.00000 0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.02000 -0.00000 0.00000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/base_wheel_r.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/base_wheel_r.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="gripper_base_link">
     <collision name="gripper_base_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
       <geometry>
-        <cylinder radius="0.60000" length="0.20000"/>
+        <cylinder radius="0.06000" length="0.02000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00933" ixy="0.00000" ixz="0.00000" iyy="0.00933" iyz="0.00000" izz="0.01800"/>
+      <inertia ixx="0.00233" ixy="0.00000" ixz="0.00000" iyy="0.00233" iyz="0.00000" izz="0.00450"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
-      <mass value="0.10000"/>
+      <mass value="0.02500"/>
     </inertial>
     <visual name="gripper_base">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/gripper_base.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_base.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="gripper_l_link">
     <collision name="gripper_l_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.04000"/>
       <geometry>
-        <box size="0.20000 0.40000 0.80000"/>
+        <box size="0.02000 0.04000 0.08000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00667" ixy="0.00000" ixz="0.00000" iyy="0.00567" iyz="0.00000" izz="0.00167"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
-      <mass value="0.10000"/>
+      <inertia ixx="0.00067" ixy="0.00000" ixz="0.00000" iyy="0.00057" iyz="0.00000" izz="0.00017"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.40000"/>
+      <mass value="0.01000"/>
     </inertial>
     <visual name="gripper_l">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.04000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/gripper_l.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_l.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
   <link name="gripper_r_link">
     <collision name="gripper_r_collision">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.04000"/>
       <geometry>
-        <box size="0.20000 0.40000 0.80000"/>
+        <box size="0.02000 0.04000 0.08000"/>
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00667" ixy="0.00000" ixz="0.00000" iyy="0.00567" iyz="0.00000" izz="0.00167"/>
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
-      <mass value="0.10000"/>
+      <inertia ixx="0.00067" ixy="0.00000" ixz="0.00000" iyy="0.00057" iyz="0.00000" izz="0.00017"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.40000"/>
+      <mass value="0.01000"/>
     </inertial>
     <visual name="gripper_r">
-      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.40000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.04000"/>
       <geometry>
-        <mesh filename="package://robotics-project/meshes/stl/gripper_r.stl" scale="1.00000 1.00000 1.00000"/>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_r.stl" scale="0.10000 0.10000 0.10000"/>
       </geometry>
     </visual>
   </link>
