@@ -1,99 +1,58 @@
-import os
-from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
-from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import Command, LaunchConfiguration
+import os, xacro
 from launch_ros.actions import Node
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
 from launch_ros.substitutions import FindPackageShare
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     pkg_share = FindPackageShare(package='robotics-project').find('robotics-project')
-    default_model_path = os.path.join(pkg_share, 'urdf/robotics-project.urdf')
-    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
 
-    gui = LaunchConfiguration('gui')
-    model = LaunchConfiguration('model')
-    use_rviz = LaunchConfiguration('use_rviz')
-    use_sim_time = LaunchConfiguration('use_sim_time')
-    rviz_config_file = LaunchConfiguration('rviz_config_file')
-    use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
-
-    decl_model_path_cmd = DeclareLaunchArgument(
-        name='model',
-        default_value=default_model_path,
+    gazebo_share = FindPackageShare(package='gazebo_ros').find('gazebo_ros')
+    gazebo_world = os.path.join(pkg_share, 'worlds', 'default.world')
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(gazebo_share, 'launch', 'gazebo.launch.py')
+        ]),
+        launch_arguments=[('world', gazebo_world)]
     )
 
-    decl_rviz_config_file_cmd = DeclareLaunchArgument(
-        name='rviz_config_file',
-        default_value=default_rviz_config_path,
+    spawn_entity = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=['-topic', 'robot_description', '-entity', 'robot'],
+        output='screen'
     )
 
-    decl_use_joint_state_publisher_cmd = DeclareLaunchArgument(
-        name='gui',
-        default_value='True',
-    )
-
-    decl_use_robot_state_pub_cmd = DeclareLaunchArgument(
-        name='use_robot_state_pub',
-        default_value='True',
-    )
-
-    decl_use_rviz_cmd = DeclareLaunchArgument(
-        name='use_rviz',
-        default_value='True',
-    )
-
-    decl_use_sim_time_cmd = DeclareLaunchArgument(
-        name='use_sim_time',
-        default_value='True',
-    )
-
-    start_joint_state_publisher_cmd = Node(
-        condition=UnlessCondition(gui),
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher'
-    )
-
-    start_joint_state_publisher_gui_node = Node(
-        condition=IfCondition(gui),
+    joint_state_publisher_gui = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui'
     )
 
-    start_robot_state_publisher_cmd = Node(
-        condition=IfCondition(use_robot_state_pub),
+    robot_path = os.path.join(pkg_share, 'urdf', 'robot.xacro')
+    robot_desc = xacro.process_file(robot_path).toxml()
+    robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         parameters=[{
-            'use_sim_time': use_sim_time,
-            'robot_description': Command(['xacro ', model])
+            'robot_description': robot_desc
         }],
-        arguments=[default_model_path]
     )
 
-    start_rviz_cmd = Node(
-        condition=IfCondition(use_rviz),
+    rviz_cfg = os.path.join(pkg_share, 'rviz/urdf.rviz')
+    rviz = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', rviz_config_file]
+        arguments=['-d', rviz_cfg]
     )
 
-    ld = LaunchDescription()
-
-    ld.add_action(decl_model_path_cmd)
-    ld.add_action(decl_rviz_config_file_cmd)
-    ld.add_action(decl_use_joint_state_publisher_cmd)
-    ld.add_action(decl_use_robot_state_pub_cmd)
-    ld.add_action(decl_use_rviz_cmd)
-    ld.add_action(decl_use_sim_time_cmd)
-
-    ld.add_action(start_joint_state_publisher_cmd)
-    ld.add_action(start_joint_state_publisher_gui_node)
-    ld.add_action(start_robot_state_publisher_cmd)
-    ld.add_action(start_rviz_cmd)
-
-    return ld
+    return LaunchDescription([
+        gazebo,
+        spawn_entity,
+        joint_state_publisher_gui,
+        robot_state_publisher,
+        rviz,
+    ])
