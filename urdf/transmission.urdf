@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot>
+  <transmission name="arm_lower_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_lower_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm_lower_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="arm_mid_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_mid_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm_mid_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="arm_upper_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_upper_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm_upper_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="arm_wrist_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_wrist_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm_wrist_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="gripper_l_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_l_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="gripper_l_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="gripper_r_link_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_r_link_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="gripper_r_link_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

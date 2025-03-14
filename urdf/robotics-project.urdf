@@ -1,35 +1,32 @@
-<robot name="robotics-project" version="1.0">
+<robot version="1.0">
   <joint name="arm_base_link_joint" type="fixed">
     <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.02000"/>
     <parent link="base_body_link"/>
     <child link="arm_base_link"/>
   </joint>
-  <joint name="arm_lower_link_joint" type="continuous">
-    <limit lower="0.00000" upper="0.00000" effort="100.00000" velocity="5.00000"/>
+  <joint name="arm_lower_link_joint" type="revolute">
+    <limit lower="-3.14159" upper="3.14159" effort="100.00000" velocity="5.00000"/>
     <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.02000"/>
     <parent link="arm_base_link"/>
     <child link="arm_lower_link"/>
     <axis xyz="0.00000 0.00000 1.00000"/>
   </joint>
   <joint name="arm_mid_link_joint" type="revolute">
-    <dynamics damping="50.00000"/>
-    <limit lower="0.00000" upper="3.14159" effort="0.00000" velocity="1.57080"/>
-    <origin rpy="-1.57080 -0.00000 0.00000" xyz="0.00000 -0.00000 0.14000"/>
+    <limit lower="-1.57080" upper="1.57080" effort="0.00000" velocity="5.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.14000"/>
     <parent link="arm_lower_link"/>
     <child link="arm_mid_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="arm_upper_link_joint" type="revolute">
-    <dynamics damping="25.00000"/>
-    <limit lower="-1.57080" upper="0.00000" effort="0.00000" velocity="1.57080"/>
+    <limit lower="-1.57080" upper="0.00000" effort="0.00000" velocity="5.00000"/>
     <origin rpy="1.57080 0.00000 0.00000" xyz="0.00000 0.00000 0.30000"/>
     <parent link="arm_mid_link"/>
     <child link="arm_upper_link"/>
     <axis xyz="1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="arm_wrist_link_joint" type="revolute">
-    <dynamics damping="10.00000"/>
-    <limit lower="-3.14159" upper="0.00000" effort="0.00000" velocity="3.14159"/>
+    <limit lower="-3.14159" upper="0.00000" effort="0.00000" velocity="5.00000"/>
     <origin rpy="1.57080 0.00000 0.00000" xyz="-0.00000 0.00000 0.18000"/>
     <parent link="arm_upper_link"/>
     <child link="arm_wrist_link"/>
@@ -65,7 +62,6 @@
     <child link="gripper_base_link"/>
   </joint>
   <joint name="gripper_l_link_joint" type="prismatic">
-    <dynamics damping="5.00000"/>
     <limit lower="0.00000" upper="0.02000" effort="0.00000" velocity="5.00000"/>
     <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.01000 -0.00000 0.01000"/>
     <parent link="gripper_base_link"/>
@@ -73,7 +69,6 @@
     <axis xyz="-1.00000 0.00000 0.00000"/>
   </joint>
   <joint name="gripper_r_link_joint" type="prismatic">
-    <dynamics damping="5.00000"/>
     <limit lower="0.00000" upper="0.02000" effort="0.00000" velocity="5.00000"/>
     <origin rpy="-0.00000 0.00000 0.00000" xyz="0.01000 -0.00000 0.01000"/>
     <parent link="gripper_base_link"/>

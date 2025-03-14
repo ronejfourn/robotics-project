@@ -1,0 +1,35 @@
+trajectory_execution:
+  allowed_execution_duration_scaling: 1.2
+  allowed_goal_duration_margin: 0.5
+  allowed_start_tolerance: 0.01
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+controller_names:
+  - arm_controller
+  - gripper_l_controller
+  - gripper_r_controller
+
+arm_controller:
+  action_ns: follow_joint_trajectory
+  type: FollowJointTrajectory
+  default: true
+  joints:
+    - arm_lower_link_joint
+    - arm_mid_link_joint
+    - arm_upper_link_joint
+    - arm_wrist_link_joint
+
+gripper_l_controller:
+  action_ns: gripper_cmd
+  type: GripperCommand
+  default: true
+  joints:
+    - gripper_l_link_joint
+
+gripper_r_controller:
+  action_ns: gripper_cmd
+  type: GripperCommand
+  default: true
+  joints:
+    - gripper_r_link_joint
