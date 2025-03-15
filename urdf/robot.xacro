@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="robotics-project.urdf"/>
+  <xacro:include filename="robot.urdf"/>
   <xacro:include filename="gazebo.urdf"/>
   <xacro:include filename="transmission.urdf"/>
   <xacro:include filename="ros2_control.urdf"/>

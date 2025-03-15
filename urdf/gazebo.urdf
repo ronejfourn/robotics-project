@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <robot>
+  <gazebo reference="base_caster_link">
+    <mu1 value="0.00001"/>
+    <mu2 value="0.00001"/>
+  </gazebo>
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
