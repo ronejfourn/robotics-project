@@ -14,6 +14,12 @@
       </geometry>
       <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
     </visual>
+    <collision>
+      <geometry>
+        <box size="0.7 0.4 0.2"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+    </collision>
   </link>
 
   <link name="base_wheel_l_link">
@@ -76,9 +82,29 @@
     </collision>
   </link>
 
+  <link name="base_lidar_link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00016666" ixy="0.0" ixz="0.0" iyy="0.00016666" iyz="0.0" izz="0.00016666"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+
   <joint name="base_chassis_joint" type="fixed">
-    <child link="base_link"/>
-    <parent link="base_chassis_link"/>
+    <parent link="base_link"/>
+    <child link="base_chassis_link"/>
     <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
   </joint>
 
@@ -105,5 +131,11 @@
     <child link="base_caster_link"/>
     <dynamics damping="0.2" friction="0.1"/>
     <origin xyz="0.2 0.0 -0.05" rpy="0.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="base_lidar_joint" type="fixed">
+    <parent link="base_chassis_link"/>
+    <child link="base_lidar_link"/>
+    <origin xyz="0.2 0.0 0.25" rpy="0.0 0.0 0.0"/>
   </joint>
 </robot>
