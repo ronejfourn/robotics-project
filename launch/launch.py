@@ -12,7 +12,7 @@ def generate_launch_description():
     pkg_share = FindPackageShare(package='robotics-project').find('robotics-project')
 
     gazebo_share = FindPackageShare(package='gazebo_ros').find('gazebo_ros')
-    gazebo_world = os.path.join(pkg_share, 'worlds', 'default.world')
+    gazebo_world = os.path.join(pkg_share, 'worlds', 'obstacles.world')
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(gazebo_share, 'launch', 'gazebo.launch.py')
