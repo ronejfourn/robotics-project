@@ -39,7 +39,7 @@
   </joint>
 
   <joint name="gripper_l_joint" type="prismatic">
-    <limit lower="-0.025" upper="0" effort="0" velocity="0"/>
+    <limit lower="-0.03" upper="0" effort="0" velocity="0"/>
     <origin rpy="-0 0 0" xyz="0 -0.04 0.01"/>
     <parent link="gripper_base_link"/>
     <child link="gripper_l_link"/>
@@ -47,7 +47,7 @@
   </joint>
 
   <joint name="gripper_r_joint" type="prismatic">
-    <limit lower="-0.025" upper="0" effort="0" velocity="0"/>
+    <limit lower="-0.03" upper="0" effort="0" velocity="0"/>
     <origin rpy="-0 0 0" xyz="0 0.04 0.01"/>
     <parent link="gripper_base_link"/>
     <child link="gripper_r_link"/>

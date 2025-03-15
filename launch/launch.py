@@ -12,7 +12,7 @@ def generate_launch_description():
     pkg_share = FindPackageShare(package='robotics-project').find('robotics-project')
 
     gazebo_share = FindPackageShare(package='gazebo_ros').find('gazebo_ros')
-    gazebo_world = os.path.join(pkg_share, 'worlds', 'obstacles.world')
+    gazebo_world = os.path.join(pkg_share, 'worlds', 'default.world')
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(gazebo_share, 'launch', 'gazebo.launch.py')
@@ -186,13 +186,13 @@ def generate_launch_description():
         ),
         RegisterEventHandler(
             OnProcessExit(
-                target_action = gripper_l_controller,
+                target_action = gripper_r_controller,
                 on_exit = [ diffdrive_controller ]
             )
         ),
         RegisterEventHandler(
             OnProcessExit(
-                target_action = gripper_r_controller,
+                target_action = diffdrive_controller,
                 on_exit = [ rviz, run_move_group_node ]
             )
         ),

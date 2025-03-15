@@ -4,16 +4,16 @@
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
-    <!--<joint name="base_wheel_l_joint">-->
-    <!--  <command_interface name="position"/>-->
-    <!--  <state_interface name="position"/>-->
-    <!--  <state_interface name="velocity"/>-->
-    <!--</joint>-->
-    <!--<joint name="base_wheel_r_joint">-->
-    <!--  <command_interface name="position"/>-->
-    <!--  <state_interface name="position"/>-->
-    <!--  <state_interface name="velocity"/>-->
-    <!--</joint>-->
+    <joint name="base_wheel_l_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="base_wheel_r_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
     <joint name="arm_lower_joint">
       <command_interface name="position"/>
       <state_interface name="position"/>
