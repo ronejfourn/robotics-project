@@ -9,5 +9,6 @@ colcon build --symlink-install
 # Usage
 ```sh
 source ~/proj_ws/install/setup.sh
+cd ~/proj_ws/src/robotics-project
 ros2 launch robotics-project launch.py
 ```

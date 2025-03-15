@@ -13,11 +13,15 @@ def generate_launch_description():
 
     gazebo_share = FindPackageShare(package='gazebo_ros').find('gazebo_ros')
     gazebo_world = os.path.join(pkg_share, 'worlds', 'obstacles.world')
+    gazebo_config = os.path.join(pkg_share, 'config', 'gazebo.yaml')
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(gazebo_share, 'launch', 'gazebo.launch.py')
         ]),
-        launch_arguments=[('world', gazebo_world)]
+        launch_arguments=[
+            ('world', gazebo_world),
+            ('extra_gazebo_args', '--ros-args --params-file '+gazebo_config)
+        ]
     )
 
     spawn_entity = Node(
@@ -25,12 +29,6 @@ def generate_launch_description():
         executable='spawn_entity.py',
         arguments=['-topic', 'robot_description', '-entity', 'robotics-project'],
         output='screen'
-    )
-
-    joint_state_publisher_gui = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui'
     )
 
     robot_path = os.path.join(pkg_share, 'urdf', 'robot.xacro')
@@ -155,11 +153,20 @@ def generate_launch_description():
         ]
     )
 
+    twist_mux_yaml = os.path.join(pkg_share, 'config', 'twist_mux.yaml')
+    twist_mux = Node(
+        package='twist_mux',
+        executable='twist_mux',
+        parameters=[twist_mux_yaml, {'use_sim_time': True}],
+        remappings=[('/cmd_vel_out', '/diff_controller/cmd_vel_unstamped')],
+    )
+
     return LaunchDescription([
         gazebo,
         spawn_entity,
         robot_state_publisher,
         slam_toolbox,
+        twist_mux,
         RegisterEventHandler(
             OnProcessExit(
                 target_action = spawn_entity,

@@ -10,8 +10,11 @@ Panels:
         - /TF1/Frames1
         - /Map1
         - /LaserScan1
+        - /Map2
       Splitter Ratio: 0.5
-    Tree Height: 402
+    Tree Height: 153
+  - Class: slam_toolbox::SlamToolboxPlugin
+    Name: SlamToolboxPlugin
 Visualization Manager:
   Class: ""
   Displays:
@@ -419,7 +422,7 @@ Visualization Manager:
       Class: rviz_default_plugins/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: true
+      Enabled: false
       Name: Map
       Topic:
         Depth: 5
@@ -435,7 +438,7 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /map_updates
       Use Timestamp: false
-      Value: true
+      Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -470,6 +473,27 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: costmap
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /global_costmap/costmap
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /global_costmap/costmap_updates
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -503,6 +527,13 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /clicked_point
     - Class: nav2_rviz_plugins/GoalTool
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: goal_pose
   Transformation:
     Current:
       Class: rviz_default_plugins/TF
@@ -510,7 +541,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 6.678030967712402
+      Distance: 10.272479057312012
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -525,22 +556,24 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3947974443435669
+      Pitch: 1.4597960710525513
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.208517074584961
+      Yaw: 1.1403329372406006
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1020
+  Height: 1080
   Hide Left Dock: false
   Hide Right Dock: false
   MotionPlanning:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001c9000003a6fc0200000004fb000000100044006900730070006c006100790073010000003b000001cd000000c700fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000020e000001d30000016900ffffff000001e9000003a600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
-  Width: 952
-  X: 964
-  Y: 29
+  QMainWindow State: 000000ff00000000fd0000000100000000000001e7000003e2fc0200000005fb000000100044006900730070006c006100790073010000003b000000d4000000c700fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000115000001800000016900fffffffb000000220053006c0061006d0054006f006f006c0062006f00780050006c007500670069006e010000029b000001820000016d00ffffff00000593000003e200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  SlamToolboxPlugin:
+    collapsed: false
+  Width: 1920
+  X: 0
+  Y: 0

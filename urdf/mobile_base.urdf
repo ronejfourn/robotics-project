@@ -4,9 +4,9 @@
 
   <link name="base_chassis_link">
     <inertial>
-      <mass value="10"/>
+      <mass value="1"/>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-      <inertia ixx="0.1665" ixy="0.0" ixz="0.0" iyy="0.441225" iyz="0.0" izz="0.541625"/>
+      <inertia ixx="0.01665" ixy="0.0" ixz="0.0" iyy="0.0441225" iyz="0.0" izz="0.0541625"/>
     </inertial>
     <visual>
       <geometry>
