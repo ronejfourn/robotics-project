@@ -3,14 +3,16 @@ from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.event_handlers import OnProcessExit
 from launch_ros.substitutions import FindPackageShare
+from launch.substitutions import LaunchConfiguration
 from launch.actions import IncludeLaunchDescription, RegisterEventHandler
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
+
     pkg_share = FindPackageShare(package='robotics-project').find('robotics-project')
 
     gazebo_share = FindPackageShare(package='gazebo_ros').find('gazebo_ros')
-    gazebo_world = os.path.join(pkg_share, 'worlds', 'default.world')
+    gazebo_world = os.path.join(pkg_share, 'worlds', 'obstacles.world')
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(gazebo_share, 'launch', 'gazebo.launch.py')
@@ -39,7 +41,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         parameters=[
             robot_description,
-            {'use_sim_time': True}
+            {'use_sim_time': True},
         ],
     )
 
@@ -65,6 +67,12 @@ def generate_launch_description():
         package='controller_manager',
         executable='spawner',
         arguments=['gripper_r_controller', '-c', '/controller_manager'],
+    )
+
+    diffdrive_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['diff_controller', '-c', '/controller_manager'],
     )
 
     robot_description_semantic = os.path.join(pkg_share, 'config', 'robot.srdf')
@@ -134,10 +142,24 @@ def generate_launch_description():
         ],
     )
 
+    slam_toolbox_share = FindPackageShare(package='slam_toolbox').find('slam_toolbox')
+    slam_params_file = os.path.join(pkg_share, 'config', 'mapper_params_online_async.yaml')
+    slam_toolbox = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam_toolbox',
+        output='screen',
+        parameters=[
+            slam_params_file,
+            {'use_sim_time': True},
+        ]
+    )
+
     return LaunchDescription([
         gazebo,
         spawn_entity,
         robot_state_publisher,
+        slam_toolbox,
         RegisterEventHandler(
             OnProcessExit(
                 target_action = spawn_entity,
@@ -160,6 +182,12 @@ def generate_launch_description():
             OnProcessExit(
                 target_action = gripper_l_controller,
                 on_exit = [ gripper_r_controller ]
+            )
+        ),
+        RegisterEventHandler(
+            OnProcessExit(
+                target_action = gripper_l_controller,
+                on_exit = [ diffdrive_controller ]
             )
         ),
         RegisterEventHandler(
