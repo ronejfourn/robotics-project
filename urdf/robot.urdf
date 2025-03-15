@@ -78,9 +78,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.01646" ixy="0.00000" ixz="0.00000" iyy="0.01646" iyz="0.00000" izz="0.03125"/>
+      <inertia ixx="0.03292" ixy="0.00000" ixz="0.00000" iyy="0.03292" iyz="0.00000" izz="0.06250"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
-      <mass value="0.25000"/>
+      <mass value="0.50000"/>
     </inertial>
     <visual name="arm_base">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
@@ -97,9 +97,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.36250" ixy="0.00000" ixz="0.00000" iyy="0.36250" iyz="0.00000" izz="0.32000"/>
+      <inertia ixx="0.48333" ixy="0.00000" ixz="0.00000" iyy="0.48333" iyz="0.00000" izz="0.42667"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.70000"/>
-      <mass value="0.75000"/>
+      <mass value="1.00000"/>
     </inertial>
     <visual name="arm_lower">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
@@ -173,9 +173,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="3.20667" ixy="0.00000" ixz="0.00000" iyy="3.20667" iyz="0.00000" izz="5.33333"/>
+      <inertia ixx="8.01667" ixy="0.00000" ixz="0.00000" iyy="8.01667" iyz="0.00000" izz="13.33333"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
-      <mass value="2.00000"/>
+      <mass value="5.00000"/>
     </inertial>
     <visual name="base_body">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
@@ -249,9 +249,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00042" ixy="0.00000" ixz="0.00000" iyy="0.00217" iyz="-0.00000" izz="0.00242"/>
+      <inertia ixx="0.00104" ixy="0.00000" ixz="0.00000" iyy="0.00542" iyz="-0.00000" izz="0.00604"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
-      <mass value="0.02500"/>
+      <mass value="0.06250"/>
     </inertial>
     <visual name="gripper_base">
       <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
@@ -268,9 +268,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00167" ixy="0.00000" ixz="0.00000" iyy="0.00142" iyz="0.00000" izz="0.00042"/>
+      <inertia ixx="0.00417" ixy="0.00000" ixz="0.00000" iyy="0.00354" iyz="0.00000" izz="0.00104"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
-      <mass value="0.02500"/>
+      <mass value="0.06250"/>
     </inertial>
     <visual name="gripper_l">
       <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
@@ -287,9 +287,9 @@
       </geometry>
     </collision>
     <inertial>
-      <inertia ixx="0.00167" ixy="0.00000" ixz="0.00000" iyy="0.00142" iyz="0.00000" izz="0.00042"/>
+      <inertia ixx="0.00417" ixy="0.00000" ixz="0.00000" iyy="0.00354" iyz="0.00000" izz="0.00104"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
-      <mass value="0.02500"/>
+      <mass value="0.06250"/>
     </inertial>
     <visual name="gripper_r">
       <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>

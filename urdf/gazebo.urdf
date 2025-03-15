@@ -7,7 +7,7 @@
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
-      <parameters>$(find robotics-project)/config/controller_gazebo.yaml</parameters>
+      <parameters>$(find robotics-project)/config/controller_ros.yaml</parameters>
     </plugin>
   </gazebo>
   <gazebo>
