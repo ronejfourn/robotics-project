@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<robot name="arm">
+  <joint name="arm_lower_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0" velocity="0"/>
+    <origin rpy="0 0 0" xyz="-0 -0 0.04"/>
+    <parent link="arm_base_link"/>
+    <child link="arm_lower_link"/>
+    <axis xyz="0 0 1.00000"/>
+  </joint>
+
+  <joint name="arm_mid_joint" type="revolute">
+    <limit lower="-1.57080" upper="1.57080" effort="0" velocity="0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.09"/>
+    <parent link="arm_lower_link"/>
+    <child link="arm_mid_link"/>
+    <axis xyz="0 1.00000 0"/>
+  </joint>
+
+  <joint name="arm_upper_joint" type="revolute">
+    <limit lower="-2.18166" upper="2.18166" effort="0" velocity="0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.36"/>
+    <parent link="arm_mid_link"/>
+    <child link="arm_upper_link"/>
+    <axis xyz="0 1.00000 0"/>
+  </joint>
+
+  <joint name="arm_wrist_joint" type="revolute">
+    <limit lower="-1.57080" upper="1.57080" effort="0" velocity="0"/>
+    <origin rpy="-0 0 0" xyz="-0 -0 0.21"/>
+    <parent link="arm_upper_link"/>
+    <child link="arm_wrist_link"/>
+    <axis xyz="0 1.00000 0"/>
+  </joint>
+
+  <joint name="gripper_base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.07"/>
+    <parent link="arm_wrist_link"/>
+    <child link="gripper_base_link"/>
+  </joint>
+
+  <joint name="gripper_l_joint" type="prismatic">
+    <limit lower="-0.025" upper="0" effort="0" velocity="0"/>
+    <origin rpy="-0 0 0" xyz="0 -0.04 0.01"/>
+    <parent link="gripper_base_link"/>
+    <child link="gripper_l_link"/>
+    <axis xyz="0 -1.00000 0"/>
+  </joint>
+
+  <joint name="gripper_r_joint" type="prismatic">
+    <limit lower="-0.025" upper="0" effort="0" velocity="0"/>
+    <origin rpy="-0 0 0" xyz="0 0.04 0.01"/>
+    <parent link="gripper_base_link"/>
+    <child link="gripper_r_link"/>
+    <axis xyz="0 1.00000 0"/>
+  </joint>
+
+  <link name="arm_base_link">
+    <inertial>
+      <mass value="0.25"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00021666666691501937" ixy="0" ixz="0" iyy="0.00021666666691501937" iyz="0" izz="0.00041666666666666675"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.01"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_base.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.01"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_base.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="arm_lower_link">
+    <inertial>
+      <mass value="0.75"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.003625000417232558" ixy="0" ixz="0" iyy="0.003625000417232558" iyz="0" izz="0.003200001049041834"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_lower.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_lower.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="arm_mid_link">
+    <inertial>
+      <mass value="1.00"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.019766666316986106" ixy="0" ixz="0" iyy="0.018833332935969064" iyz="0" izz="0.0033333340485891113"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_mid.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_mid.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="arm_upper_link">
+    <inertial>
+      <mass value="0.75"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.005656252890827108" ixy="0" ixz="0" iyy="0.005656252473593826" iyz="0" izz="0.0008000029444722158"/>
+    </inertial>
+    <visual>
+      <origin rpy="-0 0 0" xyz="-0 -0 -0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_upper.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="-0 0 0" xyz="-0 -0 -0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_upper.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="arm_wrist_link">
+    <inertial>
+      <mass value="0.375"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00036250032186517023" ixy="0" ixz="0" iyy="0.0005125004082918995" iyz="0" izz="0.00025000028312215376"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_wrist.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/arm_wrist.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="gripper_base_link">
+    <inertial>
+      <mass value="0.0625"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="5.4166682250799695e-05" ixy="0" ixz="0" iyy="1.0416677532099686e-05" iyz="0" izz="6.04166867832368e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="-0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_base.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="-0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_base.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="gripper_l_link">
+    <inertial>
+      <mass value="0.0625"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="3.5416678898037574e-05" ixy="0" ixz="0" iyy="4.1666687776649026e-05" iyz="0" izz="1.0416678152981738e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.04"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_l.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.04"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_l.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="gripper_r_link">
+    <inertial>
+      <mass value="0.0625"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="3.5416678898037574e-05" ixy="0" ixz="0" iyy="4.1666687776649026e-05" iyz="0" izz="1.0416678152981738e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0 0.04"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_r.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0 0.04"/>
+      <geometry>
+        <mesh filename="file://$(find robotics-project)/meshes/stl/gripper_r.stl" scale="0.10000 0.10000 0.10000"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

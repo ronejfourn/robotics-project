@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<robot>
+  <link name="base_link"/>
+
+  <link name="base_chassis_link">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.1665" ixy="0.0" ixz="0.0" iyy="0.441225" iyz="0.0" izz="0.541625"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.7 0.4 0.2"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+
+  <link name="base_wheel_l_link">
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00081252" ixy="0.0" ixz="0.0" iyy="0.00081252" iyz="0.0" izz="0.0015"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+    </collision>
+  </link>
+
+  <link name="base_wheel_r_link">
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00081252" ixy="0.0" ixz="0.0" iyy="0.00081252" iyz="0.0" izz="0.0015"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+    </collision>
+  </link>
+
+  <link name="base_caster_link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <inertia ixx="0.00016666" ixy="0.0" ixz="0.0" iyy="0.00016666" iyz="0.0" izz="0.00016666"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+
+  <joint name="base_chassis_joint" type="fixed">
+    <child link="base_link"/>
+    <parent link="base_chassis_link"/>
+    <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="base_wheel_l_joint" type="continuous">
+    <parent link="base_chassis_link"/>
+    <child link="base_wheel_l_link"/>
+    <origin xyz="-0.175 0.225 0.0" rpy="0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <dynamics damping="0.2" friction="1.0"/>
+    <limit effort="100" velocity="1.0"/>
+  </joint>
+
+  <joint name="base_wheel_r_joint" type="continuous">
+    <parent link="base_chassis_link"/>
+    <child link="base_wheel_r_link"/>
+    <origin xyz="-0.175 -0.225 0.0" rpy="0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <dynamics damping="0.2" friction="1.0"/>
+    <limit effort="100" velocity="1.0"/>
+  </joint>
+
+  <joint name="base_caster_joint" type="fixed">
+    <parent link="base_chassis_link"/>
+    <child link="base_caster_link"/>
+    <dynamics damping="0.2" friction="0.1"/>
+    <origin xyz="0.2 0.0 -0.05" rpy="0.0 0.0 0.0"/>
+  </joint>
+</robot>

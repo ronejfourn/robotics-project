@@ -3,24 +3,24 @@
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
-      <parameters>$(find robotics-project)/config/controller_gazebo.yaml</parameters>
+      <parameters>$(find robotics-project)/config/controller_ros.yaml</parameters>
     </plugin>
   </gazebo>
-  <gazebo>
-    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-      <left_joint>base_wheel_l_link_joint</left_joint>
-      <right_joint>base_wheel_r_link_joint</right_joint>
-      <wheel_separation>0.41</wheel_separation>
-      <wheel_diameter>0.06</wheel_diameter>
-      <max_wheel_torque>200</max_wheel_torque>
-      <max_wheel_acceleration>10</max_wheel_acceleration>
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_body_link</robot_base_frame>
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>true</publish_wheel_tf>
-    </plugin>
-  </gazebo>
+  <!-- <gazebo> -->
+  <!--   <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so"> -->
+  <!--     <left_joint>base_wheel_l_joint</left_joint> -->
+  <!--     <right_joint>base_wheel_r_joint</right_joint> -->
+  <!--     <wheel_separation>0.38</wheel_separation> -->
+  <!--     <wheel_diameter>0.1</wheel_diameter> -->
+  <!--     <max_wheel_torque>200</max_wheel_torque> -->
+  <!--     <max_wheel_acceleration>10.0</max_wheel_acceleration> -->
+  <!--     <odometry_frame>odom</odometry_frame> -->
+  <!--     <robot_base_frame>base_chassis_link</robot_base_frame> -->
+  <!--     <publish_odom>true</publish_odom> -->
+  <!--     <publish_odom_tf>true</publish_odom_tf> -->
+  <!--     <publish_wheel_tf>true</publish_wheel_tf> -->
+  <!--   </plugin> -->
+  <!-- </gazebo> -->
   <gazebo reference="base_lidar_link">
     <sensor name="laser" type="ray">
       <pose> 0 0 0 0 0 0 </pose>
