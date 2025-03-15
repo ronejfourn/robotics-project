@@ -8,21 +8,21 @@ arm_controller:
   type: FollowJointTrajectory
   default: true
   joints:
-    - arm_lower_link_joint
-    - arm_mid_link_joint
-    - arm_upper_link_joint
-    - arm_wrist_link_joint
+    - arm_lower_joint
+    - arm_mid_joint
+    - arm_upper_joint
+    - arm_wrist_joint
 
 gripper_l_controller:
   action_ns: gripper_cmd
   type: GripperCommand
   default: true
   joints:
-    - gripper_l_link_joint
+    - gripper_l_joint
 
 gripper_r_controller:
   action_ns: gripper_cmd
   type: GripperCommand
   default: true
   joints:
-    - gripper_r_link_joint
+    - gripper_r_joint

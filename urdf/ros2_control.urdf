@@ -4,61 +4,43 @@
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
-    <joint name="base_wheel_l_link_joint">
+    <!--<joint name="base_wheel_l_joint">-->
+    <!--  <command_interface name="position"/>-->
+    <!--  <state_interface name="position"/>-->
+    <!--  <state_interface name="velocity"/>-->
+    <!--</joint>-->
+    <!--<joint name="base_wheel_r_joint">-->
+    <!--  <command_interface name="position"/>-->
+    <!--  <state_interface name="position"/>-->
+    <!--  <state_interface name="velocity"/>-->
+    <!--</joint>-->
+    <joint name="arm_lower_joint">
       <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="base_wheel_r_link_joint">
+    <joint name="arm_mid_joint">
       <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="arm_lower_link_joint">
-      <command_interface name="position">
-        <param name="min">-3.14159</param>
-        <param name="max"> 3.14159</param>
-      </command_interface>
+    <joint name="arm_upper_joint">
+      <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="arm_mid_link_joint">
-      <command_interface name="position">
-        <param name="min">-1.57080</param>
-        <param name="max"> 1.57080</param>
-      </command_interface>
+    <joint name="arm_wrist_joint">
+      <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="arm_upper_link_joint">
-      <command_interface name="position">
-        <param name="min">-1.57080</param>
-        <param name="max"> 0.00000</param>
-      </command_interface>
+    <joint name="gripper_l_joint">
+      <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="arm_wrist_link_joint">
-      <command_interface name="position">
-        <param name="min">-3.14159</param>
-        <param name="max"> 0.00000</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="gripper_l_link_joint">
-      <command_interface name="position">
-        <param name="min">0.00</param>
-        <param name="max">0.02</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="gripper_r_link_joint">
-      <command_interface name="position">
-        <param name="min">0.00</param>
-        <param name="max">0.02</param>
-      </command_interface>
+    <joint name="gripper_r_joint">
+      <command_interface name="position"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>

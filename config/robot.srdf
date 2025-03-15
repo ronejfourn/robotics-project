@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot name="robot">
   <group name="base">
-    <joint name="base_wheel_l_link_joint"/>
-    <joint name="base_wheel_r_link_joint"/>
+    <joint name="base_wheel_l_joint"/>
+    <joint name="base_wheel_r_joint"/>
   </group>
 
   <disable_collisions link1="base_body_link" link2="arm_base_link" reason="Adjacent"/>
@@ -14,10 +14,10 @@
   <disable_collisions link1="base_wheel_l_link" link2="base_wheel_r_link" reason="Never"/>
 
   <group name="arm">
-    <joint name="arm_lower_link_joint"/>
-    <joint name="arm_mid_link_joint"/>
-    <joint name="arm_upper_link_joint"/>
-    <joint name="arm_wrist_link_joint"/>
+    <joint name="arm_lower_joint"/>
+    <joint name="arm_mid_joint"/>
+    <joint name="arm_upper_joint"/>
+    <joint name="arm_wrist_joint"/>
   </group>
 
   <disable_collisions link1="arm_base_link" link2="arm_lower_link" reason="Adjacent"/>
@@ -29,18 +29,18 @@
   <disable_collisions link1="arm_upper_link" link2="arm_wrist_link" reason="Adjacent"/>
 
   <group name="gripper">
-    <joint name="gripper_l_link_joint"/>
-    <joint name="gripper_r_link_joint"/>
+    <joint name="gripper_l_joint"/>
+    <joint name="gripper_r_joint"/>
   </group>
 
-  <group_state name="gripper_close" group="gripper">
-    <joint name="gripper_l_link_joint" value="0.00"/>
-    <joint name="gripper_r_link_joint" value="0.00"/>
+  <group_state name="gripper_open" group="gripper">
+    <joint name="gripper_l_joint" value="0.00"/>
+    <joint name="gripper_r_joint" value="0.00"/>
   </group_state>
 
-  <group_state name="gripper_open" group="gripper">
-    <joint name="gripper_l_link_joint" value="0.025"/>
-    <joint name="gripper_r_link_joint" value="0.025"/>
+  <group_state name="gripper_close" group="gripper">
+    <joint name="gripper_l_joint" value="-0.025"/>
+    <joint name="gripper_r_joint" value="-0.025"/>
   </group_state>
 
   <disable_collisions link1="gripper_base_link" link2="arm_wrist_link" reason="Adjacent"/>

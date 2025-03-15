@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="robot.urdf"/>
+  <xacro:include filename="mobile_base.urdf"/>
+  <xacro:include filename="arm.urdf"/>
+
+  <joint name="arm_base_joint" type="fixed">
+    <parent link="base_chassis_link"/>
+    <child link="arm_base_link"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+
   <xacro:include filename="gazebo.urdf"/>
   <xacro:include filename="transmission.urdf"/>
   <xacro:include filename="ros2_control.urdf"/>
