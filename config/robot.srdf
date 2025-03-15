@@ -20,6 +20,27 @@
     <joint name="arm_wrist_joint"/>
   </group>
 
+  <group_state name="arm_pick_up_ready" group="arm">
+    <joint name="arm_lower_joint" value="0.00"/>
+    <joint name="arm_mid_joint" value="1.30833"/>
+    <joint name="arm_upper_joint" value="1.30833"/>
+    <joint name="arm_wrist_joint" value="0.52333"/>
+  </group_state>
+
+  <group_state name="arm_pick_up_done" group="arm">
+    <joint name="arm_lower_joint" value="0.00"/>
+    <joint name="arm_mid_joint" value="0.261667"/>
+    <joint name="arm_upper_joint" value="2.180556"/>
+    <joint name="arm_wrist_joint" value="0.697778"/>
+  </group_state>
+
+  <group_state name="arm_drop" group="arm">
+    <joint name="arm_lower_joint" value="0.00"/>
+    <joint name="arm_mid_joint" value="1.046667"/>
+    <joint name="arm_upper_joint" value="1.308333"/>
+    <joint name="arm_wrist_joint" value="0.785"/>
+  </group_state>
+
   <disable_collisions link1="arm_base_link" link2="arm_lower_link" reason="Adjacent"/>
   <disable_collisions link1="arm_base_link" link2="arm_mid_link" reason="Never"/>
   <disable_collisions link1="arm_base_link" link2="arm_upper_link" reason="Never"/>
