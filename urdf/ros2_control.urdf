@@ -34,13 +34,7 @@
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-    <joint name="gripper_l_joint">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="gripper_r_joint">
-      <command_interface name="position"/>
+    <joint name="vacuum_gripper_joint">
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>

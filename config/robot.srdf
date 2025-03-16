@@ -49,23 +49,5 @@
   <disable_collisions link1="arm_mid_link" link2="arm_upper_link" reason="Adjacent"/>
   <disable_collisions link1="arm_upper_link" link2="arm_wrist_link" reason="Adjacent"/>
 
-  <group name="gripper">
-    <joint name="gripper_l_joint"/>
-    <joint name="gripper_r_joint"/>
-  </group>
-
-  <group_state name="gripper_open" group="gripper">
-    <joint name="gripper_l_joint" value="0.00"/>
-    <joint name="gripper_r_joint" value="0.00"/>
-  </group_state>
-
-  <group_state name="gripper_close" group="gripper">
-    <joint name="gripper_l_joint" value="-0.03"/>
-    <joint name="gripper_r_joint" value="-0.03"/>
-  </group_state>
-
-  <disable_collisions link1="gripper_base_link" link2="arm_wrist_link" reason="Adjacent"/>
-  <disable_collisions link1="gripper_base_link" link2="gripper_l_link" reason="Adjacent"/>
-  <disable_collisions link1="gripper_base_link" link2="gripper_r_link" reason="Adjacent"/>
-  <disable_collisions link1="gripper_l_link" link2="gripper_r_link" reason="Adjacent"/>
+  <disable_collisions link1="vacuum_gripper_link" link2="arm_wrist_link" reason="Adjacent"/>
 </robot>

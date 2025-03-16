@@ -55,18 +55,6 @@ def generate_launch_description():
         arguments=['arm_controller', '-c', '/controller_manager'],
     )
 
-    gripper_l_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['gripper_l_controller', '-c', '/controller_manager'],
-    )
-
-    gripper_r_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['gripper_r_controller', '-c', '/controller_manager'],
-    )
-
     diffdrive_controller = Node(
         package='controller_manager',
         executable='spawner',
@@ -183,18 +171,6 @@ def generate_launch_description():
         RegisterEventHandler(
             OnProcessExit(
                 target_action = arm_controller,
-                on_exit = [ gripper_l_controller ]
-            )
-        ),
-        RegisterEventHandler(
-            OnProcessExit(
-                target_action = gripper_l_controller,
-                on_exit = [ gripper_r_controller ]
-            )
-        ),
-        RegisterEventHandler(
-            OnProcessExit(
-                target_action = gripper_r_controller,
                 on_exit = [ diffdrive_controller ]
             )
         ),
