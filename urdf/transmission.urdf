@@ -36,22 +36,4 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="gripper_l_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="gripper_l_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="gripper_l_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="gripper_r_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="gripper_r_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="gripper_r_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
 </robot>

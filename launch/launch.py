@@ -55,18 +55,6 @@ def generate_launch_description():
         arguments=['arm_controller', '-c', '/controller_manager'],
     )
 
-    gripper_l_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['gripper_l_controller', '-c', '/controller_manager'],
-    )
-
-    gripper_r_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['gripper_r_controller', '-c', '/controller_manager'],
-    )
-
     diffdrive_controller = Node(
         package='controller_manager',
         executable='spawner',
@@ -106,6 +94,7 @@ def generate_launch_description():
         'publish_geometry_updates': True,
         'publish_state_updates': True,
         'publish_transforms_updates': True,
+        'publish_robot_description_semantic': True,
     }
 
     run_move_group_node = Node(
@@ -182,18 +171,6 @@ def generate_launch_description():
         RegisterEventHandler(
             OnProcessExit(
                 target_action = arm_controller,
-                on_exit = [ gripper_l_controller ]
-            )
-        ),
-        RegisterEventHandler(
-            OnProcessExit(
-                target_action = gripper_l_controller,
-                on_exit = [ gripper_r_controller ]
-            )
-        ),
-        RegisterEventHandler(
-            OnProcessExit(
-                target_action = gripper_r_controller,
                 on_exit = [ diffdrive_controller ]
             )
         ),

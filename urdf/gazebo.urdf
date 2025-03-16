@@ -6,6 +6,16 @@
       <parameters>$(find robotics-project)/config/controller_ros.yaml</parameters>
     </plugin>
   </gazebo>
+
+  <gazebo>
+    <plugin name="vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so ">
+      <link_name>vacuum_gripper_link</link_name>
+      <max_distance>0.5</max_distance>
+      <fixed>ground_plane</fixed>
+      <fixed>wall</fixed>
+    </plugin>
+  </gazebo>
+
   <!-- <gazebo> -->
   <!--   <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so"> -->
   <!--     <left_joint>base_wheel_l_joint</left_joint> -->

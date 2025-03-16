@@ -12,7 +12,7 @@ Panels:
         - /LaserScan1
         - /Map2
       Splitter Ratio: 0.5
-    Tree Height: 153
+    Tree Height: 271
   - Class: slam_toolbox::SlamToolboxPlugin
     Name: SlamToolboxPlugin
 Visualization Manager:
@@ -108,17 +108,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_l_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_r_link:
+        vacuum_gripper_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -158,12 +148,6 @@ Visualization Manager:
           Value: true
         base_wheel_r_link:
           Value: true
-        gripper_base_link:
-          Value: true
-        gripper_l_link:
-          Value: true
-        gripper_r_link:
-          Value: true
         map:
           Value: true
         odom:
@@ -183,11 +167,7 @@ Visualization Manager:
                     arm_mid_link:
                       arm_upper_link:
                         arm_wrist_link:
-                          gripper_base_link:
-                            gripper_l_link:
-                              {}
-                            gripper_r_link:
-                              {}
+                          {}
                 base_caster_link:
                   {}
                 base_lidar_link:
@@ -283,17 +263,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          gripper_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          gripper_l_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          gripper_r_link:
+          vacuum_gripper_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -321,7 +291,7 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
-        Planning Group: gripper
+        Planning Group: arm
         Query Goal State: true
         Query Start State: false
         Show Workspace: false
@@ -398,17 +368,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          gripper_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          gripper_l_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          gripper_r_link:
+          vacuum_gripper_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -564,16 +524,16 @@ Visualization Manager:
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1080
+  Height: 1020
   Hide Left Dock: false
   Hide Right Dock: false
   MotionPlanning:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001e7000003e2fc0200000005fb000000100044006900730070006c006100790073010000003b000000d4000000c700fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000115000001800000016900fffffffb000000220053006c0061006d0054006f006f006c0062006f00780050006c007500670069006e010000029b000001820000016d00ffffff00000593000003e200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001e7000003a6fc0200000005fb000000100044006900730070006c006100790073010000003b0000014a000000c700fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000018b000002560000016900fffffffb000000220053006c0061006d0054006f006f006c0062006f00780050006c007500670069006e00000002770000016a0000016d00ffffff0000058b000003a600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   SlamToolboxPlugin:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 0
+  Width: 1912
+  X: 4
+  Y: 29

@@ -1,7 +1,5 @@
 controller_names:
   - arm_controller
-  - gripper_l_controller
-  - gripper_r_controller
 
 arm_controller:
   action_ns: follow_joint_trajectory
@@ -12,17 +10,3 @@ arm_controller:
     - arm_mid_joint
     - arm_upper_joint
     - arm_wrist_joint
-
-gripper_l_controller:
-  action_ns: gripper_cmd
-  type: GripperCommand
-  default: true
-  joints:
-    - gripper_l_joint
-
-gripper_r_controller:
-  action_ns: gripper_cmd
-  type: GripperCommand
-  default: true
-  joints:
-    - gripper_r_joint
