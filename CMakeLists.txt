@@ -16,12 +16,17 @@ ament_target_dependencies(arm_pose
 )
 
 install(
+    PROGRAMS src/demo.py
+    DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
     TARGETS arm_pose
     DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
-  DIRECTORY launch meshes urdf config worlds maps
+  DIRECTORY launch meshes urdf config worlds maps src
   DESTINATION share/${PROJECT_NAME}
 )
 

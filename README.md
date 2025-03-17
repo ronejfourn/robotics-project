@@ -3,6 +3,7 @@
 mkdir -p ~/proj_ws/src
 cd ~/proj_ws/src
 git clone https://github.com/ronejfourn/robotics-project
+git clone https://github.com/Box-Robotics/ros2_numpy
 cd ..
 colcon build --symlink-install
 ```

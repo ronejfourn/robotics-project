@@ -10,27 +10,12 @@
   <gazebo>
     <plugin name="vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so ">
       <link_name>vacuum_gripper_link</link_name>
-      <max_distance>0.5</max_distance>
+      <max_distance>2</max_distance>
       <fixed>ground_plane</fixed>
       <fixed>wall</fixed>
     </plugin>
   </gazebo>
 
-  <!-- <gazebo> -->
-  <!--   <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so"> -->
-  <!--     <left_joint>base_wheel_l_joint</left_joint> -->
-  <!--     <right_joint>base_wheel_r_joint</right_joint> -->
-  <!--     <wheel_separation>0.38</wheel_separation> -->
-  <!--     <wheel_diameter>0.1</wheel_diameter> -->
-  <!--     <max_wheel_torque>200</max_wheel_torque> -->
-  <!--     <max_wheel_acceleration>10.0</max_wheel_acceleration> -->
-  <!--     <odometry_frame>odom</odometry_frame> -->
-  <!--     <robot_base_frame>base_chassis_link</robot_base_frame> -->
-  <!--     <publish_odom>true</publish_odom> -->
-  <!--     <publish_odom_tf>true</publish_odom_tf> -->
-  <!--     <publish_wheel_tf>true</publish_wheel_tf> -->
-  <!--   </plugin> -->
-  <!-- </gazebo> -->
   <gazebo reference="base_lidar_link">
     <sensor name="laser" type="ray">
       <pose> 0 0 0 0 0 0 </pose>
@@ -50,9 +35,6 @@
         </range>
       </ray>
       <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
-        <!-- <ros> -->
-        <!--   <argument>-\-remap ~/out:=scan</argument> -->
-        <!-- </ros> -->
         <output_type>sensor_msgs/LaserScan</output_type>
         <frame_name>base_lidar_link</frame_name>
       </plugin>
@@ -61,5 +43,29 @@
   <gazebo reference="base_caster_link">
     <mu1 value="0.00001"/>
     <mu2 value="0.00001"/>
+  </gazebo>
+
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="depth">
+      <pose> 0 0 0 0 0 0 </pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <camera>
+        <horizontal_fov>1.089</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <frame_name>camera_link_optical</frame_name>
+          <alwaysOn>true</alwaysOn>
+      </plugin>
+    </sensor>
   </gazebo>
 </robot>
