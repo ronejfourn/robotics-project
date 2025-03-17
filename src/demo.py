@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rclpy
 from rclpy.node import Node
@@ -81,7 +81,7 @@ class ProcessCameraImage(Node):
         msg.pose.position.x = self.last_known_pc['x'][cy,cx].item()
         msg.pose.position.y = self.last_known_pc['y'][cy,cx].item()
         # TODO tune the offset for vacuum suction
-        msg.pose.position.z = self.last_known_pc['z'][cy,cx].item() - 0.3
+        msg.pose.position.z = self.last_known_pc['z'][cy,cx].item() - 0.1
 
         # coorrect for optical axis being z forward
         msg.pose.orientation.x = -0.5

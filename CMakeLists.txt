@@ -16,6 +16,11 @@ ament_target_dependencies(arm_pose
 )
 
 install(
+    PROGRAMS src/demo.py
+    DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
     TARGETS arm_pose
     DESTINATION lib/${PROJECT_NAME}
 )
